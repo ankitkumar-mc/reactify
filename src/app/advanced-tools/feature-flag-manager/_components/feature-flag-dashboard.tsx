@@ -102,7 +102,7 @@ function EditConditionsModal({
                   id={`condition-value-${index}`}
                   type={condition.type === 'userPercentage' ? 'number' : 'text'}
                   value={condition.value}
-                  onChange={(e) => handleConditionChange(condition.id, 'value', condition.type === 'userPercentage' ? parseInt(e.target.value) || 0 : e.target.value)}
+                  onChange={(e) => handleConditionChange(condition.id, 'value', condition.type === 'userPercentage' ? parseInt((e.target as HTMLInputElement).value) || 0 : (e.target as HTMLInputElement).value)}
                 />
               </div>
             </div>
@@ -111,7 +111,7 @@ function EditConditionsModal({
                 <ReactifyTextarea
                     id={`condition-desc-${index}`}
                     value={condition.description}
-                    onChange={(e) => handleConditionChange(condition.id, 'description', e.target.value)}
+                    onChange={(e) => handleConditionChange(condition.id, 'description', (e.target as HTMLInputElement).value)}
                     rows={2}
                     placeholder="Descriptive text for this condition"
                 />
@@ -249,7 +249,7 @@ export function FeatureFlagDashboard() {
                     <ReactifyInput 
                         id="new-flag-name" 
                         value={newFlagData.name} 
-                        onChange={(e) => setNewFlagData(prev => ({...prev, name: e.target.value}))} 
+                        onChange={(e) => setNewFlagData(prev => ({...prev, name: (e.target as HTMLInputElement).value}))} 
                         placeholder="e.g., new-checkout-flow"
                     />
                 </div>
@@ -258,7 +258,7 @@ export function FeatureFlagDashboard() {
                     <ReactifyTextarea 
                         id="new-flag-desc" 
                         value={newFlagData.description} 
-                        onChange={(e) => setNewFlagData(prev => ({...prev, description: e.target.value}))}
+                        onChange={(e) => setNewFlagData(prev => ({...prev, description: (e.target as HTMLInputElement).value}))}
                         placeholder="Briefly describe what this flag controls"
                         rows={3}
                     />

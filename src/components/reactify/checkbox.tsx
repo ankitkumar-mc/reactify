@@ -1,16 +1,13 @@
-
 'use client';
 import { cn } from './utils';
 import type { ReactifyComponentProps } from './common-props';
 import type { InputHTMLAttributes } from 'react';
 import { Check } from 'lucide-react';
 
-interface ReactifyCheckboxProps extends ReactifyComponentProps, Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+type ReactifyCheckboxProps = Omit<ReactifyComponentProps, "onAbort"> & Omit<InputHTMLAttributes<HTMLInputElement>, "size"> & {
   label?: string;
   size?: 'sm' | 'md' | 'lg';
-  // Note: 'as' prop is not typically used for native input elements in this way.
-  // We'll wrap the input and label for layout.
-}
+};
 
 export function ReactifyCheckbox({
   children, // Not typically used directly, label prop is preferred

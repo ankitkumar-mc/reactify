@@ -1,4 +1,3 @@
-
 'use client';
 
 import type { ReactNode } from 'react';
@@ -26,7 +25,7 @@ const signupSchema = z.object({
 
 type SignupFormValues = z.infer<typeof signupSchema>;
 
-interface ReactifySignupFormProps extends ReactifyComponentProps {
+type ReactifySignupFormProps = Omit<ReactifyComponentProps, "onSubmit"> & {
   onSubmit?: (data: SignupFormValues) => void | Promise<void>;
   onLogin?: () => void;
   logo?: ReactNode;
@@ -34,7 +33,7 @@ interface ReactifySignupFormProps extends ReactifyComponentProps {
   description?: string;
   isLoading?: boolean;
   errorMessage?: string | null;
-}
+};
 
 export function ReactifySignupForm({
   className,

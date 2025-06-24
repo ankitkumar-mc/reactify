@@ -3,14 +3,14 @@ import type { ButtonHTMLAttributes, ReactNode } from 'react';
 import { cn } from './utils';
 import type { ReactifyComponentProps } from './common-props';
 
-interface ReactifyButtonProps extends ReactifyComponentProps, ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'destructive';
+type ReactifyButtonProps = ReactifyComponentProps & ButtonHTMLAttributes<HTMLButtonElement> & {
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'destructive' | 'success';
   size?: 'sm' | 'md' | 'lg';
   isLoading?: boolean;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
   asChild?: boolean;
-}
+};
 
 export function ReactifyButton({
   children,
@@ -34,6 +34,7 @@ export function ReactifyButton({
     outline: 'border border-input bg-transparent hover:bg-accent hover:text-accent-foreground',
     ghost: 'hover:bg-accent hover:text-accent-foreground',
     destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
+    success: 'bg-green-600 text-white hover:bg-green-700',
   };
 
   const sizeStyles = {

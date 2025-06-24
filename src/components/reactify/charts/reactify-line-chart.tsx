@@ -1,4 +1,3 @@
-
 'use client';
 
 import type { ReactNode } from 'react';
@@ -90,7 +89,7 @@ export function ReactifyLineChart({
             <Line
               key={dk.key}
               dataKey={dk.key}
-              name={dk.label || config[dk.key]?.label || dk.key}
+              name={String(dk.label || config[dk.key]?.label || dk.key)}
               type={dk.type || "monotone"}
               stroke={dk.color || `var(--color-${dk.key})`}
               strokeWidth={2}

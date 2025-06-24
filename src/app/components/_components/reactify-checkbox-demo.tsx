@@ -17,7 +17,7 @@ export default function ReactifyCheckboxDemo() {
             id="terms"
             label="Accept terms and conditions"
             checked={isChecked}
-            onChange={(e) => setIsChecked(e.target.checked)}
+            onChange={(e) => setIsChecked((e.target as HTMLInputElement).checked)}
           />
           <p className="text-sm text-muted-foreground mt-2">Checked: {isChecked.toString()}</p>
         </div>
@@ -30,7 +30,7 @@ export default function ReactifyCheckboxDemo() {
               label="Small checkbox"
               size="sm"
               checked={isCheckedSmall}
-              onChange={(e) => setIsCheckedSmall(e.target.checked)}
+              onChange={(e) => setIsCheckedSmall((e.target as HTMLInputElement).checked)}
             />
             <ReactifyCheckbox
               id="subscribe-md"
@@ -42,7 +42,7 @@ export default function ReactifyCheckboxDemo() {
               label="Large checkbox"
               size="lg"
               checked={isCheckedLarge}
-              onChange={(e) => setIsCheckedLarge(e.target.checked)}
+              onChange={(e) => setIsCheckedLarge((e.target as HTMLInputElement).checked)}
             />
           </div>
         </div>

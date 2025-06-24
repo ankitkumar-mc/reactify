@@ -1,4 +1,3 @@
-
 'use client';
 
 import type { ReactNode } from 'react';
@@ -122,7 +121,7 @@ export function ReactifyBarChart({
             <Bar
               key={dk.key}
               dataKey={dk.key}
-              name={dk.label || config[dk.key]?.label || dk.key}
+              name={String(dk.label || config[dk.key]?.label || dk.key)}
               fill={dk.color || `var(--color-${dk.key})`}
               stackId={dk.stackId}
               radius={dk.radius}

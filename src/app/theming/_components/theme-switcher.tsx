@@ -189,7 +189,7 @@ export function ThemeSwitcher() {
     <div className="space-y-6">
       {colorConfigs.map(config => (
         <div key={config.key} className="space-y-2">
-          <Label htmlFor={config.key} className="text-sm font-medium">
+          <Label htmlFor={config.key as string} className="text-sm font-medium">
             {config.label}
           </Label>
           <div className="flex items-center gap-2">
@@ -197,7 +197,7 @@ export function ThemeSwitcher() {
               type="color"
               id={`${config.key}-picker`}
               value={themeColorInputs[config.key] || '#000000'}
-              onChange={(e) => handleColorInputChange(config.key, e.target.value)}
+              onChange={(e) => handleColorInputChange(config.key as string, e.target.value)}
               className="p-1 h-10 w-14 rounded-md border"
               aria-label={`${config.label} color picker`}
             />
@@ -205,7 +205,7 @@ export function ThemeSwitcher() {
               type="text"
               id={`${config.key}-hex`}
               value={themeColorInputs[config.key] || ''}
-              onChange={(e) => handleColorInputChange(config.key, e.target.value)}
+              onChange={(e) => handleColorInputChange(config.key as string, e.target.value)}
               className="h-10"
               placeholder="#RRGGBB"
               aria-label={`${config.label} hex input`}

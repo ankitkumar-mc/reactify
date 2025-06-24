@@ -2,7 +2,6 @@
 'use client';
 import { cn } from './utils';
 import type { ReactifyComponentProps } from './common-props';
-import type { ImgHTMLAttributes } from 'react';
 
 interface ReactifyAvatarProps extends ReactifyComponentProps {
   src?: string;

@@ -1,15 +1,14 @@
-
 'use client';
 import { useState, useRef, useEffect, type ReactNode, useCallback } from 'react';
 import { cn } from './utils';
 import type { ReactifyComponentProps } from './common-props';
 
-interface ReactifyTooltipProps extends ReactifyComponentProps {
+type ReactifyTooltipProps = Omit<ReactifyComponentProps, "content"> & {
   children: ReactNode; // The trigger element
   content: ReactNode;
   position?: 'top' | 'bottom' | 'left' | 'right';
   delay?: number; // Delay in ms before showing the tooltip
-}
+};
 
 export function ReactifyTooltip({
   children,

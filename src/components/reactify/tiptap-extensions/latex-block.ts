@@ -1,7 +1,6 @@
 
 import { Node, mergeAttributes } from '@tiptap/core';
 import katex from 'katex';
-
 export interface LatexBlockOptions {
   HTMLAttributes: Record<string, any>;
   // We can add more options like inline: boolean if we want to support inline LaTeX later

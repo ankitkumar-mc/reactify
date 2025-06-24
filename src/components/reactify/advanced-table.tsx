@@ -1,4 +1,3 @@
-
 'use client';
 
 import type { ReactNode, HTMLAttributes } from 'react';
@@ -258,7 +257,7 @@ export function ReactifyAdvancedTable<TData extends Record<string, any>>(
                   onDragOver={(e) => colDef.isEffectivelyReorderable && handleDragOver(e, String(colDef.key))}
                   onDrop={(e) => colDef.isEffectivelyReorderable && handleDrop(e, String(colDef.key))}
                   onDragEnd={(e) => colDef.isEffectivelyReorderable && handleDragEnd(e)}
-                  onDragLeave={(e) => colDef.isEffectivelyReorderable && handleDragLeave(e)}
+                  onDragLeave={() => colDef.isEffectivelyReorderable && handleDragLeave()}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-1.5">

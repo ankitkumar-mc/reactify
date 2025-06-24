@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useEffect, useState, useRef, useMemo } from 'react';
@@ -35,7 +34,9 @@ function formatShortcutKeysDisplay(keys: string[], macKeys?: string[]): string {
     .sort((a, b) => order.indexOf(a) - order.indexOf(b));
   const mainKey = effectiveKeys.find(k => !order.includes(k));
   
-  const displayKeys = [...sortedModifiers, mainKey].filter(Boolean).map(mapKey);
+  const displayKeys = [...sortedModifiers, mainKey]
+    .filter((k): k is string => Boolean(k))
+    .map(mapKey);
 
   return displayKeys.join(IS_MAC && displayKeys.some(k => k === '⌘') ? '' : (IS_MAC ? ' ' : '+'));
 }
@@ -149,7 +150,7 @@ export function KeyboardShortcutManager() {
     <ReactifyModal
       isOpen={isPaletteOpen}
       onClose={closePalette}
-      title={null} // No title, more like command palette
+      title={undefined} // No title, more like command palette
       className="!p-0 max-w-xl shadow-2xl" // Remove padding, command palette style
       id="keyboard-shortcut-palette"
     >
@@ -160,7 +161,7 @@ export function KeyboardShortcutManager() {
           type="text"
           placeholder="Type a command or search..."
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={(e) => setSearchTerm((e.target as HTMLInputElement).value)}
           className="w-full h-12 text-base border-none focus-visible:ring-0 shadow-none bg-transparent px-0"
           aria-label="Search commands and shortcuts"
         />
@@ -183,7 +184,7 @@ export function KeyboardShortcutManager() {
                     return (
                         <button
                         key={shortcut.id}
-                        ref={el => itemRefs.current[globalIndex] = el}
+                        ref={el => { itemRefs.current[globalIndex] = el; }}
                         onClick={() => {
                             if (!shortcut.disabled) {
                                 shortcut.action(new KeyboardEvent('keydown'));

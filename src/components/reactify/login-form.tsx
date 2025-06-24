@@ -1,4 +1,3 @@
-
 'use client';
 
 import type { ReactNode } from 'react';
@@ -23,7 +22,7 @@ const loginSchema = z.object({
 
 type LoginFormValues = z.infer<typeof loginSchema>;
 
-interface ReactifyLoginFormProps extends ReactifyComponentProps {
+type ReactifyLoginFormProps = Omit<ReactifyComponentProps, "onSubmit"> & {
   onSubmit?: (data: LoginFormValues) => void | Promise<void>;
   onForgotPassword?: () => void;
   onSignup?: () => void;
@@ -32,7 +31,7 @@ interface ReactifyLoginFormProps extends ReactifyComponentProps {
   description?: string;
   isLoading?: boolean;
   errorMessage?: string | null;
-}
+};
 
 export function ReactifyLoginForm({
   className,

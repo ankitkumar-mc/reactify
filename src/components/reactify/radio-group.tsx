@@ -1,4 +1,3 @@
-
 'use client';
 import { useState, createContext, useContext, type InputHTMLAttributes, type ReactNode } from 'react';
 import { cn } from './utils';
@@ -21,15 +20,15 @@ const useRadioGroupContext = () => {
   return context;
 };
 
-interface ReactifyRadioGroupProps extends ReactifyComponentProps {
+type ReactifyRadioGroupProps = Omit<ReactifyComponentProps, "onChange"> & {
   name: string;
   value?: string;
   defaultValue?: string;
   onChange?: (value: string) => void;
   children: ReactNode;
   disabled?: boolean;
-  orientation?: 'horizontal' | 'vertical';
-}
+  orientation?: "horizontal" | "vertical";
+};
 
 export function ReactifyRadioGroup({
   name,

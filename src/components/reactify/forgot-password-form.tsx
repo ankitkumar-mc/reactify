@@ -1,4 +1,3 @@
-
 'use client';
 
 import type { ReactNode } from 'react';
@@ -20,7 +19,7 @@ const forgotPasswordSchema = z.object({
 
 type ForgotPasswordFormValues = z.infer<typeof forgotPasswordSchema>;
 
-interface ReactifyForgotPasswordFormProps extends ReactifyComponentProps {
+interface ReactifyForgotPasswordFormProps extends Omit<ReactifyComponentProps, "onSubmit"> {
   onSubmit?: (data: ForgotPasswordFormValues) => void | Promise<void>;
   onLogin?: () => void;
   logo?: ReactNode;

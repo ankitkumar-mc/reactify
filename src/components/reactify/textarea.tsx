@@ -1,13 +1,12 @@
-
 'use client';
 import type { TextareaHTMLAttributes } from 'react';
 import { cn } from './utils';
 import type { ReactifyComponentProps } from './common-props';
 
-interface ReactifyTextareaProps extends ReactifyComponentProps, TextareaHTMLAttributes<HTMLTextAreaElement> {
+type ReactifyTextareaProps = Omit<ReactifyComponentProps, "onAbort"> & TextareaHTMLAttributes<HTMLTextAreaElement> & {
   error?: boolean;
   // Add other textarea specific props here
-}
+};
 
 export function ReactifyTextarea({
   className,
